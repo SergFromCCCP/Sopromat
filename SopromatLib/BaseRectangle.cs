@@ -9,7 +9,7 @@ namespace SopromatLib
 {
     public class BaseRectangle : BaseShape
     {
-        float Width, Height;
+        private float Width, Height;
 
         public BaseRectangle(float width, float height) : base($"Прямоугольник, ширина {width}, высота {height}")
         {
@@ -21,9 +21,9 @@ namespace SopromatLib
 
         public override PointF CenterPoint => new PointF(Width / 2, Height / 2);
 
-        public override float CenterMoment => 0;
+        public override float CenterMoment() => 0;
 
-        public override PointF AxeMoment => new PointF(
+        public override PointF AxeMoment() => new PointF(
             Width * (float)Math.Pow(Height, 3) / 12,
             (float)Math.Pow(Width, 3) * Height / 12);
 

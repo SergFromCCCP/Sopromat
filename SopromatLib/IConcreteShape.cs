@@ -8,8 +8,8 @@ namespace SopromatLib
     public interface IConcreteShape : IBaseShape
     {
         //PointF CenterPoint { get; }
-        float GetCenterMoment(PointF point);
-        PointF GetAxeMoment(PointF point);
+        float CenterMoment(PointF point);
+        PointF AxeMoment(PointF point);
         void Draw(Graphics g, Pen p);
         List<PointF> GetCorners(float rotate = 0);
         string GetDetails(PointF point);

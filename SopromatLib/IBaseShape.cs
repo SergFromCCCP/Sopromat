@@ -11,8 +11,8 @@ namespace SopromatLib
     {
         float Area { get; }
         PointF CenterPoint { get; }
-        float CenterMoment { get; }
-        PointF AxeMoment { get; }
+        float CenterMoment();
+        PointF AxeMoment();
         void Draw(Graphics g, Pen p);
         List<PointF> GetCorners(float rotate = 0);
         string GetDetails();

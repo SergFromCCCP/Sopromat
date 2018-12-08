@@ -11,8 +11,8 @@ namespace SopromatLib
     {
         public abstract float Area { get; }
         public abstract PointF CenterPoint { get; }
-        public abstract float CenterMoment { get; }
-        public abstract PointF AxeMoment { get; }
+        public abstract float CenterMoment();
+        public abstract PointF AxeMoment();
 
         public abstract void Draw(Graphics g, Pen p);
         public abstract List<PointF> GetCorners(float rotate = 0);
@@ -34,8 +34,8 @@ namespace SopromatLib
             s.AppendLine($"Базовая фигура: {Name}");
             s.AppendLine($" Площадь: {Area:0.000}");
             s.AppendLine($" Моменты относительно центра масс:");
-            s.AppendLine($"  осевой: {AxeMoment:0.000}");
-            s.AppendLine($"  центробежный: {CenterMoment:0.000}");
+            s.AppendLine($"  осевой: {AxeMoment():0.000}");
+            s.AppendLine($"  центробежный: {CenterMoment():0.000}");
             return s.ToString();
         }
     }
