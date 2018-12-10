@@ -65,7 +65,7 @@ namespace SopromatLib
             StringBuilder s = new StringBuilder();
             s.AppendLine("КОНКРЕТНАЯ ФИГУРА ОТНОСИТЕЛЬНО ЦМ\n" + new string('-', 50));
             s.AppendLine(baseShape.GetDetails());
-            s.AppendLine(parameters.ToString());
+            s.AppendLine(parameters.GetDetails());
             s.AppendLine($"CenterPoint: {CenterPoint.ToString()}");
             s.AppendLine($"Приведенная площадь: {Area}");
             s.AppendLine("Координаты углов:");
@@ -84,6 +84,10 @@ namespace SopromatLib
             return s.ToString();
         }
 
+        public override string ToString()
+        {
+            return baseShape.ToString() + " " + parameters.ToString();
+        }
 
     }
 }

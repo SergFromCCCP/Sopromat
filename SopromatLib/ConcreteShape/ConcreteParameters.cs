@@ -33,9 +33,14 @@ namespace SopromatLib
         {
         }
 
-        public override string ToString()
+        public string GetDetails()
         {
             return $"Стартовая точка: {Location.ToString()}, угол: {AngleDegree} o, материал: {MaterialName}, коэ-т: {Koef}";
+        }
+
+        public override string ToString()
+        {
+            return $"{Location.X} {Location.Y} {AngleDegree} {MaterialName}";
         }
     }
 }

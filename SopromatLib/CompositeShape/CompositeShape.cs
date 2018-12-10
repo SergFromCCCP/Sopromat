@@ -146,5 +146,10 @@ namespace SopromatLib
                 );
 
         }
+
+        public override string ToString()
+        {
+            return string.Join("\n", shapes.Select(s => s.shape.ToString()).ToArray());
+        }
     }
 }

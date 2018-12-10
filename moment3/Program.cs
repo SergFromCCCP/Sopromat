@@ -31,7 +31,8 @@ namespace moment3
             Console.WriteLine(cc.GetDetails(new System.Drawing.PointF(0, 0)));
             //Console.WriteLine(cc.GetDetails(new System.Drawing.PointF(10, 10)));
             Console.WriteLine(cc.GetDetails(cc.CenterPoint));
-            
+
+            Console.WriteLine(cc.ToString());
             Console.ReadKey();
         }
     }

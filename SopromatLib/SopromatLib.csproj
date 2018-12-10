@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseShapeFactory.cs" />
+    <Compile Include="BaseShapes\BaseCircle.cs" />
+    <Compile Include="BaseShapes\BaseCircleSector.cs" />
     <Compile Include="BaseShapes\BaseRectangle.cs" />
     <Compile Include="BaseShapes\BaseShape.cs" />
+    <Compile Include="BaseShapes\BaseTriangle.cs" />
     <Compile Include="CompositeShape\CompositeShape.cs" />
     <Compile Include="ConcreteShape\ConcreteParameters.cs" />
     <Compile Include="ConcreteShape\ConcreteShape.cs" />

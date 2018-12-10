@@ -7,25 +7,28 @@ using System.Threading.Tasks;
 
 namespace SopromatLib
 {
-    public class BaseRectangle : BaseShape
+    public class BaseTriangle : BaseShape
     {
         private float Width, Height;
-
-        public BaseRectangle(float width, float height) : base($"Прямоугольник, ширина {width}, высота {height}")
+        public BaseTriangle(float width, float height) : base($"Треугольник, ширина {width}, высота {height}")
         {
             Width = width;
             Height = height;
         }
 
-        public override float Area => Width * Height;
+        public override float Area => Width * Height / 2;
 
-        public override PointF CenterPoint => new PointF(Width / 2, Height / 2);
+        public override PointF CenterPoint => throw new NotImplementedException();
 
-        public override float CenterMoment() => 0;
+        public override PointF AxeMoment()
+        {
+            throw new NotImplementedException();
+        }
 
-        public override PointF AxeMoment() => new PointF(
-            Width * (float)Math.Pow(Height, 3) / 12,
-            (float)Math.Pow(Width, 3) * Height / 12);
+        public override float CenterMoment()
+        {
+            throw new NotImplementedException();
+        }
 
         public override void Draw(Graphics g, Pen p)
         {
@@ -36,16 +39,14 @@ namespace SopromatLib
         {
             return new List<PointF> {
                 new PointF(0, 0),
-                new PointF(Width, 0),
                 new PointF(0, Height),
-                new PointF(Width, Height)
+                new PointF(Width, 0)
             };
         }
+
         public override string ToString()
         {
-            return $"R {Width} {Height}";
+            return $"T {Width} {Height}";
         }
     }
-
-    
 }
