@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 
 namespace SopromatLib
@@ -56,13 +57,13 @@ namespace SopromatLib
 
         public List<PointF> GetCorners(float rotate = 0)
         {
-            return baseShape.GetCorners(parameters.AngleRadian).Move(parameters.Location);
+            return baseShape.GetCorners(parameters.AngleRadian).Move(parameters.Location).Distinct().ToList();
         }
 
         public string GetDetails()
         {
             StringBuilder s = new StringBuilder();
-            s.AppendLine("GetDetails without point");
+            s.AppendLine("КОНКРЕТНАЯ ФИГУРА ОТНОСИТЕЛЬНО ЦМ\n" + new string('-', 50));
             s.AppendLine(baseShape.GetDetails());
             s.AppendLine(parameters.ToString());
             s.AppendLine($"CenterPoint: {CenterPoint.ToString()}");
@@ -75,14 +76,12 @@ namespace SopromatLib
         public string GetDetails(PointF point)
         {
             StringBuilder s = new StringBuilder();
-            s.AppendLine("GetDetails with point");
             s.AppendLine(GetDetails());
+            s.AppendLine("КОНКРЕТНАЯ ФИГУРА ОТНОСИТЕЛЬНО ТОЧКИ " + point.ToString());
             s.AppendLine($" Моменты относительно точки {point.ToString()}");
             s.AppendLine($"  осевой: {AxeMoment(point):0.000}");
             s.AppendLine($"  центробежный: {CenterMoment(point):0.000}");
-
             return s.ToString();
-
         }
 
 

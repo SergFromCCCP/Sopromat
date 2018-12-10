@@ -35,7 +35,7 @@ namespace SopromatLib
 
         public override string ToString()
         {
-            return $"Location: {Location.ToSizeF()}, angle: {AngleDegree} o, material: {MaterialName}, koef: {Koef}";
+            return $"Стартовая точка: {Location.ToString()}, угол: {AngleDegree} o, материал: {MaterialName}, коэ-т: {Koef}";
         }
     }
 }

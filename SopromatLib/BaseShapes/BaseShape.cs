@@ -31,7 +31,7 @@ namespace SopromatLib
         public string GetDetails()
         {
             StringBuilder s = new StringBuilder();
-            s.AppendLine($"Базовая фигура: {Name}");
+            s.AppendLine($"БАЗОВАЯ ФИГУРА: {Name}");
             s.AppendLine($" Площадь: {Area:0.000}");
             s.AppendLine($" Моменты относительно центра масс:");
             s.AppendLine($"  осевой: {AxeMoment():0.000}");

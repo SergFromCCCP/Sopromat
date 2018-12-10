@@ -41,16 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseRectangle.cs" />
-    <Compile Include="BaseShape.cs" />
-    <Compile Include="ConcreteParameters.cs" />
-    <Compile Include="ConcreteShape.cs" />
-    <Compile Include="IBaseShape.cs" />
-    <Compile Include="IConcreteShape.cs" />
-    <Compile Include="Material.cs" />
-    <Compile Include="MaterialFactory.cs" />
+    <Compile Include="BaseShapes\BaseRectangle.cs" />
+    <Compile Include="BaseShapes\BaseShape.cs" />
+    <Compile Include="CompositeShape\CompositeShape.cs" />
+    <Compile Include="ConcreteShape\ConcreteParameters.cs" />
+    <Compile Include="ConcreteShape\ConcreteShape.cs" />
+    <Compile Include="BaseShapes\IBaseShape.cs" />
+    <Compile Include="ConcreteShape\IConcreteShape.cs" />
+    <Compile Include="ConcreteShape\Materials\Material.cs" />
+    <Compile Include="ConcreteShape\Materials\MaterialFactory.cs" />
     <Compile Include="PointHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
