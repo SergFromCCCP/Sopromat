@@ -12,5 +12,11 @@ namespace SopromatLib
             new Material("Алюминий", 73000),
             new Material("Сталь", 200000),
             new Material("ППУ", 33.5f) };
+
+        public static Material GetMaterial(string name)
+        {
+            var found = Materials.Find(m => m.Name.ToUpper() == name.ToUpper());
+            return found;
+        }
     }
 }

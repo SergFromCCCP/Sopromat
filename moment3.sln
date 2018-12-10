@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "moment3", "moment3\moment3.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SopromatLib", "SopromatLib\SopromatLib.csproj", "{D81A4D5A-190A-4FC8-A63E-FC2BCE1B2371}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForm", "TestForm\TestForm.csproj", "{4FEB4AD6-5F5C-4EDF-99E4-E247892BE704}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D81A4D5A-190A-4FC8-A63E-FC2BCE1B2371}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D81A4D5A-190A-4FC8-A63E-FC2BCE1B2371}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D81A4D5A-190A-4FC8-A63E-FC2BCE1B2371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FEB4AD6-5F5C-4EDF-99E4-E247892BE704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FEB4AD6-5F5C-4EDF-99E4-E247892BE704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FEB4AD6-5F5C-4EDF-99E4-E247892BE704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FEB4AD6-5F5C-4EDF-99E4-E247892BE704}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
