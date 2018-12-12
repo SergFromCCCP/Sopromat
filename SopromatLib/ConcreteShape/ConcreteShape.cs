@@ -57,19 +57,17 @@ namespace SopromatLib
 
         public List<PointF> GetCorners(float rotate = 0)
         {
-            return baseShape.GetCorners(parameters.AngleRadian).Move(parameters.Location).Distinct().ToList();
+            return baseShape.GetCorners(parameters.AngleRadian).Rotate(parameters.AngleRadian).Move(parameters.Location).Distinct().ToList();
         }
 
         public string GetDetails()
         {
             StringBuilder s = new StringBuilder();
-            s.AppendLine("КОНКРЕТНАЯ ФИГУРА ОТНОСИТЕЛЬНО ЦМ\n" + new string('-', 50));
+            //s.AppendLine("КОНКРЕТНАЯ ФИГУРА ОТНОСИТЕЛЬНО ЦМ\n" + new string('-', 50));
             s.AppendLine(baseShape.GetDetails());
             s.AppendLine(parameters.GetDetails());
             s.AppendLine($"CenterPoint: {CenterPoint.ToString()}");
-            s.AppendLine($"Приведенная площадь: {Area}");
-            s.AppendLine("Координаты углов:");
-            s.AppendLine(string.Join(", ", GetCorners()));
+            //s.AppendLine($"Приведенная площадь: {Area}");
             return s.ToString();
         }
 
@@ -81,6 +79,9 @@ namespace SopromatLib
             s.AppendLine($" Моменты относительно точки {point.ToString()}");
             s.AppendLine($"  осевой: {AxeMoment(point):0.000}");
             s.AppendLine($"  центробежный: {CenterMoment(point):0.000}");
+            s.AppendLine("Координаты углов:");
+            s.AppendLine(string.Join(", ", GetCorners(parameters.AngleRadian)));
+            s.AppendLine($"Максимальные расстояния: {get}")
             return s.ToString();
         }
 

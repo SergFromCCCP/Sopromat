@@ -33,9 +33,11 @@ namespace SopromatLib
             StringBuilder s = new StringBuilder();
             s.AppendLine($"БАЗОВАЯ ФИГУРА: {Name}");
             s.AppendLine($" Площадь: {Area:0.000}");
+            s.AppendLine($" Центр масс: {CenterPoint.ToString()}");
             s.AppendLine($" Моменты относительно центра масс:");
             s.AppendLine($"  осевой: {AxeMoment():0.000}");
             s.AppendLine($"  центробежный: {CenterMoment():0.000}");
+            s.AppendLine($" Углы: {string.Join(", ", GetCorners().Select(z=>z.ToString()))}");
             return s.ToString();
         }
     }

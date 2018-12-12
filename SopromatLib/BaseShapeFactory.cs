@@ -10,11 +10,11 @@ namespace SopromatLib
     public static class BaseShapeFactory
     {
         private static Dictionary<string, Func<float[], IBaseShape>> dict =
-        new Dictionary<string, Func<float[], IBaseShape>> {
-                { "R", z => new BaseRectangle(z[0], z[1]) },
-                { "T", z => new BaseTriangle(z[0], z[1]) },
-                { "C", z => new BaseCircle(z[0]) },
-                { "CS", z => new BaseCircleSector(z[0], (int)(z[1])) }
+            new Dictionary<string, Func<float[], IBaseShape>> {
+                    { "R", z => new BaseRectangle(z[0], z[1]) },
+                    { "T", z => new BaseTriangle(z[0], z[1]) },
+                    { "C", z => new BaseCircle(z[0]) },
+                    { "CS", z => new BaseCircleSector(z[0], (int)(z[1])) }
         };
 
         private static ConcreteParameters GetConcreteParameters(string[] data)
@@ -32,9 +32,22 @@ namespace SopromatLib
             if (constructor.StartsWith("-"))
                 constructor = constructor.Substring(1);
             var parameters = constructor.Split(' ');
-            var baseShape = GetBaseShape(parameters);
-            var concreteParameters = GetConcreteParameters(parameters.Skip(3).ToArray());
-            return new ConcreteShape(baseShape, concreteParameters);
+            if (parameters.Count() < 6)
+                throw new ArgumentException("Формат конструктора: <Команда> V1 V2 X Y Angle [материал_текущий материал_базовый]");
+            if (parameters.Count() == 6)
+            {
+                parameters = (constructor +" "+ MaterialFactory.Materials[0].Name + " " + MaterialFactory.Materials[0].Name).Split(' ');
+            }
+            try
+            {
+                var baseShape = GetBaseShape(parameters);
+                var concreteParameters = GetConcreteParameters(parameters.Skip(3).ToArray());
+                return new ConcreteShape(baseShape, concreteParameters);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
 
         private static IBaseShape GetBaseShape(string[] data)

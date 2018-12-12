@@ -40,7 +40,7 @@ namespace SopromatLib
             var k3 = Math.Pow(Math.Sin(HalfAngle), 2);
             var pc = CenterPoint;
             return new PointF(
-                (float)(J * (k1 + k2 - 64 / 9 * k3 / AngleRadian)),
+                (float)(J * (k1 + k2 - 64f / 9f * k3 / AngleRadian)),
                 (float)(J * (k1 - k2))
                 );
         }
@@ -61,15 +61,18 @@ namespace SopromatLib
         {
             var xc = (float)(Radius * Math.Sin(HalfAngle));
             var yc = (float)(Radius * Math.Cos(HalfAngle));
+
             List<PointF> result = new List<PointF> { new PointF(0, 0), new PointF(xc, yc), new PointF(-xc, yc) };
+
             var min = (float)(Math.PI / 2 - HalfAngle) + (rotate % (float)(Math.PI * 2));
+            var koefs = new[] { 0, 1, 0, -1, 0 };
             for (int i = 0; i < 4; i++)
             {
-                var a = (float)(i * Math.PI);
+                var a = (float)(i * Math.PI / 2);
                 if (IsBetween(a, min, min + AngleRadian))
-                    result.Add(new PointF(0, 0));
+                    result.Add(new PointF(Radius * koefs[i + 1], Radius * koefs[i]));
             }
-            return result;
+            return result.Distinct().ToList();
         }
 
         private bool IsBetween(float v, float min, float max)
