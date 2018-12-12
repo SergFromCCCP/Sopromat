@@ -29,7 +29,7 @@ namespace SopromatLib
 
         public override void Draw(Graphics g, Pen p)
         {
-            throw new NotImplementedException();
+            g.DrawRectangle(p, 0, 0, Width, Height);
         }
 
         public override List<PointF> GetCorners(float rotate = 0)

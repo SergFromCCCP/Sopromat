@@ -31,36 +31,15 @@ namespace SopromatLib
         {
             if (constructor.StartsWith("-"))
                 constructor = constructor.Substring(1);
-            var p = constructor.Split(' ');
-            var b = GetBaseShape(p);
-            var c = GetConcreteParameters(p.Skip(3).ToArray());
-            return new ConcreteShape(b, c);
+            var parameters = constructor.Split(' ');
+            var baseShape = GetBaseShape(parameters);
+            var concreteParameters = GetConcreteParameters(parameters.Skip(3).ToArray());
+            return new ConcreteShape(baseShape, concreteParameters);
         }
 
         private static IBaseShape GetBaseShape(string[] data)
         {
             return dict[data[0]](data.Skip(1).Take(2).Select(z => float.Parse(z)).ToArray());
         }
-        //public static BaseRectangle GetRectangle(float width, float height)
-        //{
-        //    return new BaseRectangle(width, height);
-        //}
-
-        //public static BaseRectangle GetRectangle(string constructor)
-        //{
-        //    if (!constructor.Trim().ToUpper().StartsWith("R"))
-        //        throw new ArgumentException("Строка должна начинаться с R");
-        //    var p = constructor.Split(' ');
-        //    if (p.Count() < 3)
-        //        throw new ArgumentException();
-        //    try
-        //    {
-        //        return new BaseRectangle(float.Parse(p[1]), float.Parse(p[2]));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new ArgumentException(ex.Message);
-        //    }
-        //}
     }
 }

@@ -11,44 +11,71 @@ namespace SopromatLib
     {
         private float Radius, AngleRadian;
         private int AngleDegree;
-
-        //public BaseCircleSector(float radius, float angleRadian) : this(radius, (int)(angleRadian / Math.PI * 180))
-        //{
-        //    Radius = radius;
-        //    AngleRadian = angleRadian;
-        //}
-
+        private float HalfAngle;
+        private float radius_2, radius_4;
+        /// <summary>
+        /// Круговой сектор, симметрично относительно вертикальной оси, угол раскрытия 2 альфа
+        /// </summary>
+        /// <param name="radius"></param>
+        /// <param name="angleDegree"></param>
         public BaseCircleSector(float radius, int angleDegree) : base($"Сектор радиус: {radius}, угол раскрытия: {angleDegree}")
         {
             Radius = radius;
             AngleDegree = angleDegree;
             AngleRadian = (float)(angleDegree * Math.PI / 180);
+            HalfAngle = AngleRadian / 2;
+            radius_2 = radius * radius;
+            radius_4 = radius_2 * radius_2;
         }
 
-        public override float Area => AngleRadian * Radius * Radius / 2;
+        public override float Area => HalfAngle * Radius * Radius;
 
-        public override PointF CenterPoint => new PointF(0, 0);
+        public override PointF CenterPoint => new PointF(0, 2 * Radius * (float)Math.Sin(HalfAngle) / (3 * HalfAngle));
 
         public override PointF AxeMoment()
         {
-            throw new NotImplementedException();
+            var J = radius_4 / 8;
+            var k1 = AngleRadian;
+            var k2 = Math.Sin(AngleRadian);
+            var k3 = Math.Pow(Math.Sin(HalfAngle), 2);
+            var pc = CenterPoint;
+            return new PointF(
+                (float)(J * (k1 + k2 - 64 / 9 * k3 / AngleRadian)),
+                (float)(J * (k1 - k2))
+                );
         }
 
         public override float CenterMoment()
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
-        public override void Draw(Graphics g, Pen p)
+        public override void Draw(Graphics g, Pen pen)
         {
-            throw new NotImplementedException();
+            g.DrawPie(pen, new RectangleF(-Radius, -Radius, 2 * Radius, 2 * Radius),
+                                (float)(90 - HalfAngle * 180 / Math.PI),
+                                (float)(AngleRadian * 180 / Math.PI));
         }
 
         public override List<PointF> GetCorners(float rotate = 0)
         {
-            throw new NotImplementedException();
+            var xc = (float)(Radius * Math.Sin(HalfAngle));
+            var yc = (float)(Radius * Math.Cos(HalfAngle));
+            List<PointF> result = new List<PointF> { new PointF(0, 0), new PointF(xc, yc), new PointF(-xc, yc) };
+            var min = (float)(Math.PI / 2 - HalfAngle) + (rotate % (float)(Math.PI * 2));
+            for (int i = 0; i < 4; i++)
+            {
+                var a = (float)(i * Math.PI);
+                if (IsBetween(a, min, min + AngleRadian))
+                    result.Add(new PointF(0, 0));
+            }
+            return result;
         }
 
+        private bool IsBetween(float v, float min, float max)
+        {
+            return (v >= min) && (v <= max);
+        }
         public override string ToString()
         {
             return $"CS {Radius} {AngleDegree}";

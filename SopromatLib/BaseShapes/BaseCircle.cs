@@ -7,38 +7,44 @@ using System.Threading.Tasks;
 
 namespace SopromatLib
 {
-  public  class BaseCircle:BaseShape
+    public class BaseCircle : BaseShape
     {
         private float Radius, Angle;
         private int AngleDegree;
 
-        public BaseCircle(float radius, int angleDegree=0):base("Круг радиусом "+radius)
+        public BaseCircle(float radius, int angleDegree = 0) : base("Круг радиусом " + radius)
         {
             Radius = radius;
         }
 
-        public override float Area => throw new NotImplementedException();
+        public override float Area => (float)(Math.PI * Radius * Radius);
 
-        public override PointF CenterPoint => throw new NotImplementedException();
+        public override PointF CenterPoint => new PointF(0, 0);
 
         public override PointF AxeMoment()
         {
-            throw new NotImplementedException();
+            var J = (float)(Math.PI * Math.Pow(Radius, 4) / 4);
+            return new PointF(J, J);
         }
 
         public override float CenterMoment()
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public override void Draw(Graphics g, Pen p)
         {
-            throw new NotImplementedException();
+            g.DrawEllipse(p, -Radius, -Radius, 2 * Radius, 2 * Radius);
         }
 
         public override List<PointF> GetCorners(float rotate = 0)
         {
-            throw new NotImplementedException();
+            return new List<PointF> {
+                new PointF(Radius, 0),
+                new PointF(0, Radius),
+                new PointF(-Radius, 0),
+                new PointF(0, -Radius)
+            };
         }
 
         public override string ToString()
