@@ -81,10 +81,17 @@ namespace SopromatLib
             s.AppendLine($"  центробежный: {CenterMoment(point):0.000}");
             s.AppendLine("Координаты углов:");
             s.AppendLine(string.Join(", ", GetCorners(parameters.AngleRadian)));
-            s.AppendLine($"Максимальные расстояния: {get}")
+            s.AppendLine($"Максимальные расстояния: {GetMaxDistance(point).ToString()}");
             return s.ToString();
         }
 
+        public PointF GetMaxDistance(PointF point)
+        {
+            var corners = GetCorners(parameters.AngleRadian);
+            return new PointF(
+                corners.Max(z => Math.Abs(z.X - point.X)), 
+                corners.Max(z => Math.Abs(z.Y - point.Y)));
+        }
         public override string ToString()
         {
             return baseShape.ToString() + " " + parameters.ToString();

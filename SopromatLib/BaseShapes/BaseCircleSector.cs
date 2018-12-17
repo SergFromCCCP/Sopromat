@@ -70,7 +70,7 @@ namespace SopromatLib
             {
                 var a = (float)(i * Math.PI / 2);
                 if (IsBetween(a, min, min + AngleRadian))
-                    result.Add(new PointF(Radius * koefs[i + 1], Radius * koefs[i]));
+                    result.Add((new PointF(Radius * koefs[i + 1], Radius * koefs[i])).Rotate(-rotate));
             }
             return result.Distinct().ToList();
         }

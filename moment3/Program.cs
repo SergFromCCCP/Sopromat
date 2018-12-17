@@ -10,12 +10,12 @@ namespace moment3
     internal class Program
     {
         private static Dictionary<string, Func<float[], IBaseShape>> dict =
-    new Dictionary<string, Func<float[], IBaseShape>> {
-                { "R", z => new BaseRectangle(z[0], z[1]) },
-                { "T", z => new BaseTriangle(z[0], z[1]) },
-                { "C", z => new BaseCircle(z[0]) },
-                { "CS", z => new BaseCircleSector(z[0], (int)(z[1])) }
-    };
+                                    new Dictionary<string, Func<float[], IBaseShape>> {
+                                                { "R", z => new BaseRectangle(z[0], z[1]) },
+                                                { "T", z => new BaseTriangle(z[0], z[1]) },
+                                                { "C", z => new BaseCircle(z[0]) },
+                                                { "CS", z => new BaseCircleSector(z[0], (int)(z[1])) }
+                                    };
 
         private static void Main(string[] args)
         {
