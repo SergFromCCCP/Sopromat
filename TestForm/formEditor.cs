@@ -13,12 +13,30 @@ namespace TestForm
 {
     public partial class formEditor : Form
     {
-        private Dictionary<string, Func<float[], IBaseShape>> dict =
-            new Dictionary<string, Func<float[], IBaseShape>> {
-                { "R", z => new BaseRectangle(z[0], z[1]) },
-                { "T", z => new BaseTriangle(z[0], z[1]) },
-                { "C", z => new BaseCircle(z[0]) },
-                { "CS", z => new BaseCircleSector(z[0], (int)(z[1])) }
+        private class ShapeConstructor
+        {
+            public string Name;
+            public Func<float[], BaseShape> constructor;
+        }
+
+        private Dictionary<string, ShapeConstructor> dict =
+            new Dictionary<string, ShapeConstructor> {
+                { "R", new ShapeConstructor {
+                    Name = "Прямоугольник",
+                    constructor = (z) => new BaseRectangle(z[0], z[1]) }
+                },
+                { "T", new ShapeConstructor {
+                    Name = "Треугольник",
+                    constructor = (z) => new BaseTriangle(z[0], z[1]) }
+                },
+                { "C", new ShapeConstructor {
+                    Name = "Круг",
+                    constructor = (z) => new BaseCircle(z[0]) }
+                },
+                { "CS", new ShapeConstructor {
+                    Name = "Круговой сектор",
+                    constructor = (z) => new BaseCircleSector(z[0], (int)(z[1])) }
+                }
             };
 
         public List<Material> materials { get; set; }
@@ -32,6 +50,13 @@ namespace TestForm
 
         private void formEditor_Load(object sender, EventArgs e)
         {
+            cboMaterial.DataSource = materials;
+            cboMaterial.DisplayMember = "name";
+
+            var s = dict.Keys.Select( z =>new { name = z, value = dict[z].Name });
+            cboBaseShapes.DataSource = s.ToArray();
+            cboBaseShapes.DisplayMember = "value";
+            cboBaseShapes.ValueMember = "name";
 
         }
 
@@ -47,13 +72,21 @@ namespace TestForm
 
         private IBaseShape GetBaseShape()
         {
-            var a = dict[comboBox1.SelectedValue.ToString()];
-            return a(GetData());
+            var a = dict[cboBaseShapes.SelectedValue.ToString()];
+            return a.constructor(GetData());
         }
 
         private float[] GetData()
         {
             return new float[] { float.Parse(txtData1.Text), float.Parse(txtData2.Text) };
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var bs = GetBaseShape();
+            var cp = GetConcreteParameters();
+            var cs = new ConcreteShape(bs, cp);
+            shapeList.Items.Add(cs.ToString());
         }
     }
 }

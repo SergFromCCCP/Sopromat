@@ -30,7 +30,7 @@
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkSubstract = new System.Windows.Forms.CheckBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboBaseShapes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtData1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cboMaterial = new System.Windows.Forms.ComboBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.shapeList = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -56,7 +56,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.checkSubstract);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.cboBaseShapes);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtData1);
             this.groupBox2.Controls.Add(this.label2);
@@ -78,13 +78,14 @@
             this.checkSubstract.Text = "Вычесть";
             this.checkSubstract.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cboBaseShapes
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(207, 21);
-            this.comboBox1.TabIndex = 0;
+            this.cboBaseShapes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBaseShapes.FormattingEnabled = true;
+            this.cboBaseShapes.Location = new System.Drawing.Point(6, 19);
+            this.cboBaseShapes.Name = "cboBaseShapes";
+            this.cboBaseShapes.Size = new System.Drawing.Size(207, 21);
+            this.cboBaseShapes.TabIndex = 0;
             // 
             // label1
             // 
@@ -101,6 +102,7 @@
             this.txtData1.Name = "txtData1";
             this.txtData1.Size = new System.Drawing.Size(100, 20);
             this.txtData1.TabIndex = 2;
+            this.txtData1.Text = "100";
             // 
             // label2
             // 
@@ -117,6 +119,7 @@
             this.txtData2.Name = "txtData2";
             this.txtData2.Size = new System.Drawing.Size(100, 20);
             this.txtData2.TabIndex = 2;
+            this.txtData2.Text = "200";
             // 
             // button3
             // 
@@ -126,6 +129,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "button1";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnEdit
             // 
@@ -224,19 +228,20 @@
             // 
             // cboMaterial
             // 
+            this.cboMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMaterial.FormattingEnabled = true;
             this.cboMaterial.Location = new System.Drawing.Point(90, 73);
             this.cboMaterial.Name = "cboMaterial";
             this.cboMaterial.Size = new System.Drawing.Size(100, 21);
             this.cboMaterial.TabIndex = 0;
             // 
-            // listBox1
+            // shapeList
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 12);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(291, 225);
-            this.listBox1.TabIndex = 11;
+            this.shapeList.FormattingEnabled = true;
+            this.shapeList.Location = new System.Drawing.Point(12, 12);
+            this.shapeList.Name = "shapeList";
+            this.shapeList.Size = new System.Drawing.Size(291, 225);
+            this.shapeList.TabIndex = 11;
             // 
             // btnAdd
             // 
@@ -257,7 +262,7 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.shapeList);
             this.Controls.Add(this.btnAdd);
             this.Name = "formEditor";
             this.Text = "formEditor";
@@ -274,7 +279,7 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox checkSubstract;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboBaseShapes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtData1;
         private System.Windows.Forms.Label label2;
@@ -291,7 +296,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboMaterial;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox shapeList;
         private System.Windows.Forms.Button btnAdd;
     }
 }

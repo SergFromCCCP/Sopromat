@@ -16,7 +16,10 @@ namespace TestForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var f = new formEditor();
+            f.materials = SopromatLib.MaterialFactory.Materials;
+            f.baseMaterial = SopromatLib.MaterialFactory.Materials.First();
+            Application.Run(f);
         }
     }
 }
