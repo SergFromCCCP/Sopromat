@@ -118,8 +118,8 @@ namespace SopromatLib
         public string GetDetails(PointF point)
         {
             StringBuilder s = new StringBuilder();
-            //foreach (var v in shapes)
-                //s.AppendLine(v.shape.GetDetails(point));
+            foreach (var v in shapes)
+                s.AppendLine(v.shape.GetDetails(point));
             s.AppendLine("СОСТАВНАЯ ФИГУРА\n" + new string('-', 50));
             s.AppendLine($"CenterPoint: {CenterPoint.ToString()}");
             s.AppendLine($"Приведенная площадь: {Area}");

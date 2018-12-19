@@ -21,5 +21,24 @@ namespace TestForm
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var f = new formEditor();
+            f.materials = SopromatLib.MaterialFactory.Materials;
+            f.baseMaterial = SopromatLib.MaterialFactory.Materials.First();
+            f.shapes = SopromatLib.BaseShapeFactory.GetBaseNames().ToList();
+            f.ShowDialog();
+            var constructor = f.CompositeShapeConstructor;
+            var cs = new SopromatLib.CompositeShape();
+            foreach (var item in constructor)
+            {
+                if (item.StartsWith("-"))
+                    cs.Substract(SopromatLib.BaseShapeFactory.GetConcreteShape(item));
+                else
+                    cs.Add(SopromatLib.BaseShapeFactory.GetConcreteShape(item));
+            }
+            textBox1.Text = cs.GetDetails(new PointF(0, 0));
+        }
     }
 }

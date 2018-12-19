@@ -64,7 +64,7 @@
             this.groupBox2.Location = new System.Drawing.Point(325, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(254, 134);
-            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Базовая фигура";
             // 
@@ -74,7 +74,7 @@
             this.checkSubstract.Location = new System.Drawing.Point(15, 101);
             this.checkSubstract.Name = "checkSubstract";
             this.checkSubstract.Size = new System.Drawing.Size(69, 17);
-            this.checkSubstract.TabIndex = 5;
+            this.checkSubstract.TabIndex = 3;
             this.checkSubstract.Text = "Вычесть";
             this.checkSubstract.UseVisualStyleBackColor = true;
             // 
@@ -101,7 +101,7 @@
             this.txtData1.Location = new System.Drawing.Point(113, 46);
             this.txtData1.Name = "txtData1";
             this.txtData1.Size = new System.Drawing.Size(100, 20);
-            this.txtData1.TabIndex = 2;
+            this.txtData1.TabIndex = 1;
             this.txtData1.Text = "100";
             // 
             // label2
@@ -126,7 +126,7 @@
             this.button3.Location = new System.Drawing.Point(463, 304);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 7;
+            this.button3.TabIndex = 3;
             this.button3.Text = "button1";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -145,7 +145,7 @@
             this.txtRotate.Location = new System.Drawing.Point(154, 47);
             this.txtRotate.Name = "txtRotate";
             this.txtRotate.Size = new System.Drawing.Size(36, 20);
-            this.txtRotate.TabIndex = 4;
+            this.txtRotate.TabIndex = 2;
             this.txtRotate.Text = "360";
             // 
             // label6
@@ -171,7 +171,7 @@
             this.txtY.Location = new System.Drawing.Point(129, 19);
             this.txtY.Name = "txtY";
             this.txtY.Size = new System.Drawing.Size(61, 20);
-            this.txtY.TabIndex = 4;
+            this.txtY.TabIndex = 1;
             this.txtY.Text = "200";
             // 
             // btnDelete
@@ -197,7 +197,7 @@
             this.txtX.Location = new System.Drawing.Point(31, 19);
             this.txtX.Name = "txtX";
             this.txtX.Size = new System.Drawing.Size(59, 20);
-            this.txtX.TabIndex = 4;
+            this.txtX.TabIndex = 0;
             this.txtX.Text = "100";
             // 
             // groupBox1
@@ -213,7 +213,7 @@
             this.groupBox1.Location = new System.Drawing.Point(325, 170);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(213, 103);
-            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Конкретизация";
             // 
@@ -233,7 +233,7 @@
             this.cboMaterial.Location = new System.Drawing.Point(90, 73);
             this.cboMaterial.Name = "cboMaterial";
             this.cboMaterial.Size = new System.Drawing.Size(100, 21);
-            this.cboMaterial.TabIndex = 0;
+            this.cboMaterial.TabIndex = 3;
             // 
             // shapeList
             // 
@@ -241,7 +241,7 @@
             this.shapeList.Location = new System.Drawing.Point(12, 12);
             this.shapeList.Name = "shapeList";
             this.shapeList.Size = new System.Drawing.Size(291, 225);
-            this.shapeList.TabIndex = 11;
+            this.shapeList.TabIndex = 0;
             // 
             // btnAdd
             // 
