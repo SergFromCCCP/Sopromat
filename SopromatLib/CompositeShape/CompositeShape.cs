@@ -106,6 +106,10 @@ namespace SopromatLib
             {
                 shapeDetails.shape.Draw(g, shapeDetails.koef > 0 ? Brushes.Black : Brushes.White);
             }
+            g.TranslateTransform(CenterPoint.X, CenterPoint.Y);
+            g.DrawLine(Pens.Red, -10, 0, 10, 0);
+            g.DrawLine(Pens.Red, 0, -10, 0, 10);
+            g.TranslateTransform(-CenterPoint.X, -CenterPoint.Y);
         }
 
         public List<PointF> GetCorners(float rotate = 0)
@@ -123,11 +127,11 @@ namespace SopromatLib
             StringBuilder s = new StringBuilder();
             //foreach (var v in shapes)
             //    s.AppendLine(v.shape.GetDetails(point));
-            s.AppendLine("СОСТАВНАЯ ФИГУРА\n" + new string('-', 50));
+            s.AppendLine("СОСТАВНАЯ ФИГУРА" + Environment.NewLine + new string('-', 50));
             s.AppendLine($"CenterPoint: {CenterPoint.ToString()}");
             s.AppendLine($"Приведенная площадь: {Area}");
-            s.AppendLine("Координаты углов:");
-            s.AppendLine(string.Join(", ", GetCorners()));
+            //s.AppendLine("Координаты углов:");
+            //s.AppendLine(string.Join(", ", GetCorners()));
             s.AppendLine($" Моменты относительно точки {point.ToString()}");
             s.AppendLine($"  осевой: {AxeMoment(point):0.000}");
             s.AppendLine($"  центробежный: {CenterMoment(point):0.000}");

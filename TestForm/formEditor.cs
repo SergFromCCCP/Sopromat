@@ -22,9 +22,6 @@ namespace TestForm
             get
             {
                 return ShapeParser.StringShapeConstructor(txtConstructor.Text);
-                //.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
-                ////.Where(z => z.Trim() != "")
-                //.ToArray();
             }
         }
 

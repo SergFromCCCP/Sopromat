@@ -30,11 +30,7 @@ namespace TestForm
             f.baseMaterial = SopromatLib.MaterialFactory.Materials.First();
             f.shapes = SopromatLib.ShapeFactory.GetBaseNames().ToList();
             f.ShowDialog();
-            //string s = "";
-            //foreach (var item in f.CompositeShapeConstructor)
-            //{
-            //    s += item + Environment.NewLine;
-            //}
+            if (f.DialogResult != DialogResult.OK) return;
             txtConstructor.Text = ShapeParser.StringShapeConstructor(f.CompositeShapeConstructor);
         }
 
@@ -61,18 +57,30 @@ namespace TestForm
                     else
                         cs.Add(SopromatLib.ShapeFactory.GetConcreteShape(item));
                 }
-                textBox1.Text = cs.GetDetails(new PointF(0, 0));
-                var g = CreateGraphics();
-                g.Clear(this.BackColor);
-                g.TranslateTransform(0, ClientRectangle.Height);
-                g.ScaleTransform(1, -1);
-                cs.Draw(g, null);
-                g.ResetTransform();
+                textBox1.Text = cs.GetDetails(new PointF(float.Parse(txtX.Text), float.Parse(txtY.Text)));
+                DrawShape(pictureBox1, cs);
             }
             catch (Exception ex)
             {
                 textBox1.Text = ex.Message;
             }
+        }
+
+        private void DrawShape(Control c, SopromatLib.CompositeShape cs)
+        {
+            var g = c.CreateGraphics();
+            g.Clear(this.BackColor);
+            g.TranslateTransform(c.ClientRectangle.Width / 2, c.ClientRectangle.Height / 2);
+            g.ScaleTransform(1, -1);
+            g.DrawLine(Pens.Gray, -c.ClientRectangle.Width / 2, 0, c.ClientRectangle.Width / 2, 0);
+            g.DrawLine(Pens.Gray, 0, -c.ClientRectangle.Height / 2, 0, c.ClientRectangle.Height / 2);
+            cs.Draw(g, null);
+            g.ResetTransform();
+        }
+
+        private void txtX_TextChanged(object sender, EventArgs e)
+        {
+            Solution();
         }
     }
 }

@@ -46,6 +46,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cboMaterial = new System.Windows.Forms.ComboBox();
             this.txtConstructor = new System.Windows.Forms.TextBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -224,11 +226,33 @@
             this.txtConstructor.Size = new System.Drawing.Size(291, 328);
             this.txtConstructor.TabIndex = 11;
             // 
+            // btnOK
+            // 
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.Location = new System.Drawing.Point(376, 362);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 12;
+            this.btnOK.Text = "Сохранить";
+            this.btnOK.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(479, 362);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "Отменить";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // formEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 352);
+            this.ClientSize = new System.Drawing.Size(600, 392);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtConstructor);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button3);
@@ -265,5 +289,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboMaterial;
         private System.Windows.Forms.TextBox txtConstructor;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
