@@ -58,7 +58,7 @@ namespace SopromatLib
         {
             if (constructor.StartsWith("-"))
                 constructor = constructor.Substring(1);
-            var parameters = constructor.Split(' ');
+            var parameters = constructor.Split(new string[] { " " },StringSplitOptions.RemoveEmptyEntries);
             if (parameters.Count() < 6)
                 throw new ArgumentException("Формат конструктора: <Команда> V1 V2 X Y Angle [материал_текущий материал_базовый]");
             if (parameters.Count() == 6)
@@ -79,7 +79,7 @@ namespace SopromatLib
 
         private static BaseShape GetBaseShape(string[] data)
         {
-            return dict[data[0]].constructor(data.Skip(1).Take(2).Select(z => float.Parse(z)).ToArray());
+            return dict[data[0].ToUpper()].constructor(data.Skip(1).Take(2).Select(z => float.Parse(z)).ToArray());
         }
 
         public static IEnumerable<KeyValuePair<string, string>> GetBaseNames()

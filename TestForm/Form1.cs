@@ -19,7 +19,8 @@ namespace TestForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            cboBaseMaterial.DataSource = SopromatLib.MaterialFactory.Materials;
+            cboBaseMaterial.DisplayMember = "Name";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,17 +30,37 @@ namespace TestForm
             f.baseMaterial = SopromatLib.MaterialFactory.Materials.First();
             f.shapes = SopromatLib.ShapeFactory.GetBaseNames().ToList();
             f.ShowDialog();
-            var constructor = f.CompositeShapeConstructor;
-            var cs = new SopromatLib.CompositeShape();
-            foreach (var item in constructor)
-            {
-                if (item.StartsWith("-"))
-                    cs.Substract(SopromatLib.ShapeFactory.GetConcreteShape(item));
-                else
-                    cs.Add(SopromatLib.ShapeFactory.GetConcreteShape(item));
-            }
+            //string s = "";
+            //foreach (var item in f.CompositeShapeConstructor)
+            //{
+            //    s += item + Environment.NewLine;
+            //}
+            txtConstructor.Text = ShapeParser.StringShapeConstructor(f.CompositeShapeConstructor);
+        }
+
+        private void txtConstructor_TextChanged(object sender, EventArgs e)
+        {
+            Solution();
+        }
+
+        private void cboBaseMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Solution();
+        }
+
+        private void Solution()
+        {
             try
             {
+                var constructor = ShapeParser.StringShapeConstructor(txtConstructor.Text).Select(z => z + " " + cboBaseMaterial.SelectedItem.ToString());
+                var cs = new SopromatLib.CompositeShape();
+                foreach (var item in constructor)
+                {
+                    if (item.StartsWith("-"))
+                        cs.Substract(SopromatLib.ShapeFactory.GetConcreteShape(item));
+                    else
+                        cs.Add(SopromatLib.ShapeFactory.GetConcreteShape(item));
+                }
                 textBox1.Text = cs.GetDetails(new PointF(0, 0));
                 var g = CreateGraphics();
                 g.Clear(this.BackColor);

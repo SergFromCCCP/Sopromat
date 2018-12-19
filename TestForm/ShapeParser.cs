@@ -1,17 +1,27 @@
-﻿using System;
+﻿using SopromatLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SopromatLib;
 
 namespace TestForm
 {
-   public class ShapeParser
+    public static class ShapeParser
     {
-        public string ShapeToString(IConcreteShape shape)
+        public static string ShapeToString(IConcreteShape shape)
         {
             return shape.ToString();
+        }
+
+        public static string StringShapeConstructor(IEnumerable<string> items)
+        {
+            return string.Join(Environment.NewLine, items);
+        }
+
+        public static IEnumerable<string> StringShapeConstructor(string items)
+        {
+            return items.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }

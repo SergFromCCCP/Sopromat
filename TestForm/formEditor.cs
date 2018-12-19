@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,10 @@ namespace TestForm
         {
             get
             {
-                var result = new List<string>();
-                foreach (var item in shapeList.Items)
-                    result.Add(item.ToString());
-                return result;
+                return ShapeParser.StringShapeConstructor(txtConstructor.Text);
+                //.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+                ////.Where(z => z.Trim() != "")
+                //.ToArray();
             }
         }
 
@@ -54,34 +55,36 @@ namespace TestForm
 
         private string GetConcreteConstructor()
         {
-            return $"{txtX.Text} {txtY.Text} {txtRotate.Text} {(cboMaterial.SelectedItem as Material).Name} {baseMaterial.Name}";
+            return $"{txtX.Text} {txtY.Text} {txtRotate.Text} {(cboMaterial.SelectedItem as Material).Name}";
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //var cs = ShapeFactory.GetConcreteShape(GetShapeConstructor());
-            shapeList.Items.Add((checkSubstract.Checked ? "-" : "") + GetShapeConstructor());
-        }
+            txtConstructor.Text = ShapeParser.StringShapeConstructor(new string[] {
+                txtConstructor.Text.Trim(),
+                (checkSubstract.Checked ? "-" : "") + GetShapeConstructor().Trim()});
+    }
 
-        private void cboBaseShapes_SelectedIndexChanged(object sender, EventArgs e)
+    private void cboBaseShapes_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        switch (cboBaseShapes.SelectedValue.ToString())
         {
-            switch (cboBaseShapes.SelectedValue.ToString())
-            {
-                case "R":
-                case "T":
-                    label1.Text = "Ширина";
-                    label2.Text = "Высота";
-                    break;
-                case "CS":
-                    label1.Text = "Радиус";
-                    label2.Text = "Угол раскрытия";
-                    break;
-                case "C":
-                    label1.Text = "Радиус";
-                    break;
-                default:
-                    break;
-            }
+            case "R":
+            case "T":
+                label1.Text = "Ширина";
+                label2.Text = "Высота";
+                break;
+            case "CS":
+                label1.Text = "Радиус";
+                label2.Text = "Угол раскрытия";
+                break;
+            case "C":
+                label1.Text = "Радиус";
+                label2.Text = "Не используется";
+                break;
+            default:
+                break;
         }
     }
+}
 }

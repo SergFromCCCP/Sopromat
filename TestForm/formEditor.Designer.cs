@@ -36,19 +36,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtData2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.txtRotate = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtY = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtX = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cboMaterial = new System.Windows.Forms.ComboBox();
-            this.shapeList = new System.Windows.Forms.ListBox();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtConstructor = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -132,15 +129,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(93, 250);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 8;
-            this.btnEdit.Text = "button1";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
             // txtRotate
             // 
             this.txtRotate.Location = new System.Drawing.Point(154, 47);
@@ -174,15 +162,6 @@
             this.txtY.Size = new System.Drawing.Size(61, 20);
             this.txtY.TabIndex = 1;
             this.txtY.Text = "200";
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(174, 250);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 9;
-            this.btnDelete.Text = "button1";
-            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -236,35 +215,24 @@
             this.cboMaterial.Size = new System.Drawing.Size(100, 21);
             this.cboMaterial.TabIndex = 3;
             // 
-            // shapeList
+            // txtConstructor
             // 
-            this.shapeList.FormattingEnabled = true;
-            this.shapeList.Location = new System.Drawing.Point(12, 12);
-            this.shapeList.Name = "shapeList";
-            this.shapeList.Size = new System.Drawing.Size(291, 225);
-            this.shapeList.TabIndex = 0;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 250);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 10;
-            this.btnAdd.Text = "button1";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.txtConstructor.Location = new System.Drawing.Point(12, 12);
+            this.txtConstructor.Multiline = true;
+            this.txtConstructor.Name = "txtConstructor";
+            this.txtConstructor.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtConstructor.Size = new System.Drawing.Size(291, 328);
+            this.txtConstructor.TabIndex = 11;
             // 
             // formEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 352);
+            this.Controls.Add(this.txtConstructor);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.shapeList);
-            this.Controls.Add(this.btnAdd);
             this.Name = "formEditor";
             this.Text = "formEditor";
             this.Load += new System.EventHandler(this.formEditor_Load);
@@ -273,6 +241,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -286,18 +255,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtData2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.TextBox txtRotate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtY;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtX;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboMaterial;
-        private System.Windows.Forms.ListBox shapeList;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox txtConstructor;
     }
 }
