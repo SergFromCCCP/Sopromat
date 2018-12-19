@@ -50,9 +50,13 @@ namespace SopromatLib
         }
 
 
-        public void Draw(Graphics g, Pen p)
+        public void Draw(Graphics g, Brush brush)
         {
-            throw new NotImplementedException();
+            var oldState = g.Save();
+            g.TranslateTransform(parameters.Location.X, parameters.Location.Y);
+            g.RotateTransform(parameters.AngleDegree);
+            baseShape.Draw(g, brush);
+            g.Restore(oldState);
         }
 
         public List<PointF> GetCorners(float rotate = 0)

@@ -15,6 +15,7 @@ namespace SopromatLib
         {
             Width = width;
             Height = height;
+            path.AddRectangle(new RectangleF(0, 0, Width, Height));
         }
 
         public override float Area => Width * Height;
@@ -27,10 +28,10 @@ namespace SopromatLib
             Width * (float)Math.Pow(Height, 3) / 12,
             (float)Math.Pow(Width, 3) * Height / 12);
 
-        public override void Draw(Graphics g, Pen p)
-        {
-            g.DrawRectangle(p, 0, 0, Width, Height);
-        }
+        //public override void Draw(Graphics g, Brush brush)
+        //{
+        //    g.FillRectangle(brush, 0, 0, Width, Height);
+        //}
 
         public override List<PointF> GetCorners(float rotate = 0)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SopromatLib
 {
-    public static class BaseShapeFactory
+    public static class ShapeFactory
     {
         private class ShapeConstructor
         {
@@ -87,9 +87,9 @@ namespace SopromatLib
             return dict.Select(d => new KeyValuePair<string, string>(d.Key, d.Value.Name));
         }
 
-        public static string GetShapeKey(string name)
-        {
-            return dict.Single(d => d.Value.Name == name).Key;
-        }
+        //public static string GetShapeKey(string name)
+        //{
+        //    return dict.Single(d => d.Value.Name == name).Key;
+        //}
     }
 }

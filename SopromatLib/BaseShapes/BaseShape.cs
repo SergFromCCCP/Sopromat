@@ -14,10 +14,15 @@ namespace SopromatLib
         public abstract float CenterMoment();
         public abstract PointF AxeMoment();
 
-        public abstract void Draw(Graphics g, Pen p);
+        public virtual void Draw(Graphics g, Brush brush)
+        {
+            g.FillPath(brush, path);
+            g.DrawPath(Pens.Gray, path);
+        }
         public abstract List<PointF> GetCorners(float rotate = 0);
 
         public string Name { get; private set; }
+        internal System.Drawing.Drawing2D.GraphicsPath path=new System.Drawing.Drawing2D.GraphicsPath();
 
         protected BaseShape(string name)
         {

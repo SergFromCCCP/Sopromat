@@ -100,9 +100,12 @@ namespace SopromatLib
             return Jxy;
         }
 
-        public void Draw(Graphics g, Pen p)
+        public void Draw(Graphics g, Brush brush)
         {
-            throw new NotImplementedException();
+            foreach (var shapeDetails in shapes)
+            {
+                shapeDetails.shape.Draw(g, shapeDetails.koef > 0 ? Brushes.Black : Brushes.White);
+            }
         }
 
         public List<PointF> GetCorners(float rotate = 0)

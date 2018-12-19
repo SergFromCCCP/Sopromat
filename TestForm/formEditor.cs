@@ -13,32 +13,6 @@ namespace TestForm
 {
     public partial class formEditor : Form
     {
-        //private class ShapeConstructor
-        //{
-        //    public string Name;
-        //    public Func<float[], BaseShape> constructor;
-        //}
-
-        //private Dictionary<string, ShapeConstructor> dict =
-        //    new Dictionary<string, ShapeConstructor> {
-        //        { "R", new ShapeConstructor {
-        //            Name = "Прямоугольник",
-        //            constructor = (z) => new BaseRectangle(z[0], z[1]) }
-        //        },
-        //        { "T", new ShapeConstructor {
-        //            Name = "Треугольник",
-        //            constructor = (z) => new BaseTriangle(z[0], z[1]) }
-        //        },
-        //        { "C", new ShapeConstructor {
-        //            Name = "Круг",
-        //            constructor = (z) => new BaseCircle(z[0]) }
-        //        },
-        //        { "CS", new ShapeConstructor {
-        //            Name = "Круговой сектор",
-        //            constructor = (z) => new BaseCircleSector(z[0], (int)(z[1])) }
-        //        }
-        //    };
-
         public List<Material> materials { get; set; }
         public List<KeyValuePair<string, string>> shapes { get; set; }
         public Material baseMaterial { get; set; }
@@ -48,7 +22,7 @@ namespace TestForm
             {
                 var result = new List<string>();
                 foreach (var item in shapeList.Items)
-                    result.Add(item.ToString() + " " + baseMaterial.Name);
+                    result.Add(item.ToString());
                 return result;
             }
         }
@@ -63,35 +37,11 @@ namespace TestForm
             cboMaterial.DataSource = materials;
             cboMaterial.DisplayMember = "name";
 
-            //var s = dict.Keys.Select(z => new { name = z, value = dict[z].Name });
             cboBaseShapes.DataSource = shapes.ToArray();
             cboBaseShapes.DisplayMember = "value";
             cboBaseShapes.ValueMember = "key";
 
         }
-
-        //private ConcreteParameters GetConcreteParameters()
-        //{
-        //    return BaseShapeFactory.GetConcreteParameters(new string[] {
-        //        txtX.Text, txtY.Text, txtRotate.Text, cboMaterial.SelectedItem.ToString(), baseMaterial.Name });
-        //    //return new ConcreteParameters(
-        //    //    new PointF(float.Parse(txtX.Text), float.Parse(txtY.Text)),
-        //    //    int.Parse(txtRotate.Text),
-        //    //    (Material)cboMaterial.SelectedItem,
-        //    //    baseMaterial
-        //    //    );
-        //}
-
-        //private IBaseShape GetBaseShape()
-        //{
-        //    var a = dict[cboBaseShapes.SelectedValue.ToString()];
-        //    return a.constructor(GetData());
-        //}
-
-        //private float[] GetData()
-        //{
-        //    return new float[] { float.Parse(txtData1.Text), float.Parse(txtData2.Text) };
-        //}
 
         private string GetShapeConstructor()
         {
@@ -109,11 +59,29 @@ namespace TestForm
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var cs = BaseShapeFactory.GetConcreteShape(GetShapeConstructor());
-            //var bs = GetBaseShape();
-            //var cp = GetConcreteParameters();
-            //var cs = new ConcreteShape(bs, cp);
-            shapeList.Items.Add((checkSubstract.Checked ? "-" : "") + cs.ToString());
+            //var cs = ShapeFactory.GetConcreteShape(GetShapeConstructor());
+            shapeList.Items.Add((checkSubstract.Checked ? "-" : "") + GetShapeConstructor());
+        }
+
+        private void cboBaseShapes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cboBaseShapes.SelectedValue.ToString())
+            {
+                case "R":
+                case "T":
+                    label1.Text = "Ширина";
+                    label2.Text = "Высота";
+                    break;
+                case "CS":
+                    label1.Text = "Радиус";
+                    label2.Text = "Угол раскрытия";
+                    break;
+                case "C":
+                    label1.Text = "Радиус";
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

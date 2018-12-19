@@ -27,18 +27,31 @@ namespace TestForm
             var f = new formEditor();
             f.materials = SopromatLib.MaterialFactory.Materials;
             f.baseMaterial = SopromatLib.MaterialFactory.Materials.First();
-            f.shapes = SopromatLib.BaseShapeFactory.GetBaseNames().ToList();
+            f.shapes = SopromatLib.ShapeFactory.GetBaseNames().ToList();
             f.ShowDialog();
             var constructor = f.CompositeShapeConstructor;
             var cs = new SopromatLib.CompositeShape();
             foreach (var item in constructor)
             {
                 if (item.StartsWith("-"))
-                    cs.Substract(SopromatLib.BaseShapeFactory.GetConcreteShape(item));
+                    cs.Substract(SopromatLib.ShapeFactory.GetConcreteShape(item));
                 else
-                    cs.Add(SopromatLib.BaseShapeFactory.GetConcreteShape(item));
+                    cs.Add(SopromatLib.ShapeFactory.GetConcreteShape(item));
             }
-            textBox1.Text = cs.GetDetails(new PointF(0, 0));
+            try
+            {
+                textBox1.Text = cs.GetDetails(new PointF(0, 0));
+                var g = CreateGraphics();
+                g.Clear(this.BackColor);
+                g.TranslateTransform(0, ClientRectangle.Height);
+                g.ScaleTransform(1, -1);
+                cs.Draw(g, null);
+                g.ResetTransform();
+            }
+            catch (Exception ex)
+            {
+                textBox1.Text = ex.Message;
+            }
         }
     }
 }

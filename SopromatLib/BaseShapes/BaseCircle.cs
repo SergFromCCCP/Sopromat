@@ -15,6 +15,7 @@ namespace SopromatLib
         public BaseCircle(float radius, int angleDegree = 0) : base("Круг радиусом " + radius)
         {
             Radius = radius;
+            path.AddEllipse(-Radius, -Radius, 2 * Radius, 2 * Radius);
         }
 
         public override float Area => (float)(Math.PI * Radius * Radius);
@@ -32,10 +33,10 @@ namespace SopromatLib
             return 0;
         }
 
-        public override void Draw(Graphics g, Pen p)
-        {
-            g.DrawEllipse(p, -Radius, -Radius, 2 * Radius, 2 * Radius);
-        }
+        //public override void Draw(Graphics g, Brush brush)
+        //{
+        //    g.FillEllipse(brush, -Radius, -Radius, 2 * Radius, 2 * Radius);
+        //}
 
         public override List<PointF> GetCorners(float rotate = 0)
         {

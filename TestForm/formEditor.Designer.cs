@@ -63,7 +63,7 @@
             this.groupBox2.Controls.Add(this.txtData2);
             this.groupBox2.Location = new System.Drawing.Point(325, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(254, 134);
+            this.groupBox2.Size = new System.Drawing.Size(225, 134);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Базовая фигура";
@@ -86,6 +86,7 @@
             this.cboBaseShapes.Name = "cboBaseShapes";
             this.cboBaseShapes.Size = new System.Drawing.Size(207, 21);
             this.cboBaseShapes.TabIndex = 0;
+            this.cboBaseShapes.SelectedIndexChanged += new System.EventHandler(this.cboBaseShapes_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -123,11 +124,11 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(463, 304);
+            this.button3.Location = new System.Drawing.Point(334, 279);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 3;
-            this.button3.Text = "button1";
+            this.button3.Text = "Добавить";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -210,9 +211,9 @@
             this.groupBox1.Controls.Add(this.txtX);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cboMaterial);
-            this.groupBox1.Location = new System.Drawing.Point(325, 170);
+            this.groupBox1.Location = new System.Drawing.Point(325, 152);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(213, 103);
+            this.groupBox1.Size = new System.Drawing.Size(225, 103);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Конкретизация";

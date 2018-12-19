@@ -26,6 +26,7 @@ namespace SopromatLib
             HalfAngle = AngleRadian / 2;
             radius_2 = radius * radius;
             radius_4 = radius_2 * radius_2;
+            path.AddPie(-Radius, -Radius, 2 * Radius, 2 * Radius, 90 - AngleDegree / 2, AngleDegree);
         }
 
         public override float Area => HalfAngle * Radius * Radius;
@@ -50,12 +51,10 @@ namespace SopromatLib
             return 0;
         }
 
-        public override void Draw(Graphics g, Pen pen)
-        {
-            g.DrawPie(pen, new RectangleF(-Radius, -Radius, 2 * Radius, 2 * Radius),
-                                (float)(90 - HalfAngle * 180 / Math.PI),
-                                (float)(AngleRadian * 180 / Math.PI));
-        }
+        //public override void Draw(Graphics g, Brush brush)
+        //{
+        //    g.FillPie(brush, -Radius, -Radius, 2 * Radius, 2 * Radius, 90 - AngleDegree / 2, 90 + AngleDegree / 2);
+        //}
 
         public override List<PointF> GetCorners(float rotate = 0)
         {

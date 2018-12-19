@@ -58,7 +58,7 @@ namespace moment3
                 }
                 try
                 {
-                    var bs = BaseShapeFactory.GetConcreteShape(answer);
+                    var bs = ShapeFactory.GetConcreteShape(answer);
                     Console.WriteLine(bs.GetDetails(new System.Drawing.PointF(0,0)));
                 }
                 catch (Exception ex)
